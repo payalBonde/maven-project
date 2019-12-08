@@ -1,10 +1,17 @@
-pipeline{
-    agent any
-    stages{
-        stage('cloning git'){
-            steps{
-                git 'https://github.com/payalBonde/maven-project'
+pipeline {
+    agent any {
+        stages {
+            stage ("git clone") {
+                steps {
+                    git "https://github.com/payalBonde/maven-project"
+                }
             }
+            stage ("build maven project") {
+                steps {
+                    sh "mvn clean install"
+                }
+            }
+            
         }
     }
 }
