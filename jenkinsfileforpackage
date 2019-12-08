@@ -17,12 +17,12 @@ stages {
 			
 	stage("test code using maven"){
 	steps{
-	mvn "mvn test"
+	sh "mvn test"
 		}
 	}
 	stage("package code"){
 	steps{
-	mvn "mvn package"
+	sh "mvn package"
 		}
 	}
 }
