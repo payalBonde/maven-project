@@ -1,0 +1,29 @@
+pipeline {
+agent any
+stages {
+	stage("git colning") {
+	steps {
+	git "https://github.com/payalBonde/maven-project"
+	}
+	}
+		
+	stage("commit code"){
+	steps{
+	withMaven(jdk: 'localJDK', maven: 'localMaven'){
+	sh "mvn compile"
+		}
+		}
+	}
+			
+	stage("test code using maven"){
+	steps{
+	mvn "mvn test"
+		}
+	}
+	stage("test code using maven"){
+	steps{
+	mvn "mvn package"
+		}
+	}
+}
+}
