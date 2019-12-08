@@ -1,0 +1,22 @@
+pipeline {
+agent any
+stages {
+	stage("git cloning") {
+	steps {
+	git "https://github.com/payalBonde/maven-project"
+	}
+	}
+	stage("install code"){
+		steps{
+		sh "mvn install"
+			}
+	}
+	stage("deploy to tomcat"){
+		steps{
+		sshagent (['tomcatnew']) {
+		sh 'scp -o StrictHostKeyChecking=no -l */target/*.war ec2-user@172.31.27.244:/usr/share/tomcat/webapps'
+		}
+		}
+	}
+}
+}
