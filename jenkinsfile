@@ -1,6 +1,6 @@
 pipeline {
-    agent any {
-        stages {
+    agent any
+	stages {
             stage ("git clone") {
                 steps {
                     git "https://github.com/payalBonde/maven-project"
@@ -13,5 +13,4 @@ pipeline {
             }
             
         }
-    }
 }
