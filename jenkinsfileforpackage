@@ -20,7 +20,7 @@ stages {
 	mvn "mvn test"
 		}
 	}
-	stage("test code using maven"){
+	stage("package code"){
 	steps{
 	mvn "mvn package"
 		}
