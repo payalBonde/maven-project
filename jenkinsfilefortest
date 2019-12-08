@@ -15,7 +15,7 @@ sh "mvn compile"
 }
 stage("test code using maven"){
 steps{
-mvn "mvn test"
+sh "mvn test"
 }
 }
 }
