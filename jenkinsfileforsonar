@@ -8,8 +8,8 @@ pipeline{
         }
         stage ("sonar"){
             steps{
-                withSonarQubeEnv(credentialsId: 'SonarNew', installationName: 'Sonar New for jenkins') {
-                    sh "${scannerHome}/bin/sonar-scanner"
+                withSonarQubeEnv('Sonar New for jenkins') {
+                 sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
                 }
             }
         }
