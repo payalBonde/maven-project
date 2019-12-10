@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+    stages{
+        stage ("git cloning"){
+            steps{
+                git "https://github.com/payalBonde/maven-project"
+            }
+        }
+        stage ("sonar"){
+            steps{
+                withSonarQubeEnv(credentialsId: 'SonarNew') {
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
+            }
+        }
+    }
+}
