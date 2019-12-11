@@ -11,7 +11,7 @@ pipeline{
 			parallel(
 			a:{
 			echo 'this is a'
-			}
+			},
 			b:{
 			echo 'this is b'
 			}
