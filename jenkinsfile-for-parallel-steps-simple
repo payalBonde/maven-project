@@ -1,0 +1,22 @@
+pipeline{
+	agent any
+	stages{
+		stage('git clone'){
+			steps{
+				git 'https://github.com/payalBonde/maven-project.git'
+			}
+		}
+		stage('parallel execution'){
+			steps{
+			parallel(
+			a:{
+			echo 'this is a'
+			}
+			b:{
+			echo 'this is b'
+			}
+			)
+			}
+		}
+	}
+}
