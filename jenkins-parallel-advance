@@ -1,0 +1,30 @@
+pipeline{
+	agent none
+	stages{
+		stage('git clone'){
+			steps{
+				git 'https://github.com/payalBonde/maven-project.git'
+			}
+		}
+		stage('parallel execution'){
+			parallel{
+				stage('test on slave1'){
+					agent{
+						label "slave1"
+					}
+					steps{
+						echo 'this is a'
+					}
+				}
+				stage(Stage on slave2){
+					agent{
+						label "slave2"
+					}
+					steps{
+						echo 'this is b'
+					}
+				}
+			}
+		}
+	}
+}
