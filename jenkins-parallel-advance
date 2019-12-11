@@ -16,7 +16,7 @@ pipeline{
 						echo 'this is a'
 					}
 				}
-				stage(Stage on slave2){
+				stage('Stage on slave2'){
 					agent{
 						label "slave2"
 					}
